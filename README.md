@@ -12,5 +12,6 @@ This project uses [Laravel Sail](https://laravel.com/docs/10.x/sail) for develop
 - `cd` into the project directory
 - Run `./vendor/bin/sail composer install`
 - Run `./vendor/bin/sail up -d`
+- Run `./vendor/bin/sail artisan migrate`
 
 Check the [Laravel Sail documentation](https://laravel.com/docs/10.x/sail) for more information.
