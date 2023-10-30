@@ -14,6 +14,10 @@ export default function Index({ auth, chirps, ...props }) {
         post(route("chirps.store"), { onSuccess: () => reset() });
     };
 
+    const hasUserCreatedAnyChirps = chirps.some(
+        (chirp) => chirp.user_id === auth.user.id
+    );
+
     return (
         <AuthenticatedLayout user={auth.user}>
             <Head title="Chirps" />
@@ -27,6 +31,11 @@ export default function Index({ auth, chirps, ...props }) {
                         onChange={(e) => setData("message", e.target.value)}
                     ></textarea>
                     <InputError message={errors.message} className="mt-2" />
+                    {!hasUserCreatedAnyChirps && (
+                        <span className="font-bold">
+                            You haven't chirped yet! {" "}
+                        </span>
+                    )}
                     <PrimaryButton className="mt-4" disabled={processing}>
                         Chirp
                     </PrimaryButton>
